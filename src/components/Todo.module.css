@@ -1,0 +1,32 @@
+.addtask {
+  display: flex;
+  justify-content: space-around;
+  background-color: rebeccapurple;
+  height: 4rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
+}
+
+.addtask input {
+  background-color: azure;
+}
+/* .addtask span {
+  background-color: rebeccapurple;
+} */
+.addtask button {
+  display: flex;
+  /* border: none;
+  padding: 0;*/
+  height: 2rem;
+  align-items: center;
+  background-color: #3c3c3c;
+  color: #e27423;
+}
+
+.addtask span {
+  display: flex;
+
+  align-items: center;
+  /* justify-content: center; */
+  background-color: rebeccapurple;
+}
