@@ -10,6 +10,7 @@ function App() {
       <header className="header">
         <h1>Todo List</h1>
       </header>
+
       <main>
         <Todo tasks={dataList}></Todo>
       </main>
