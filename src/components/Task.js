@@ -2,16 +2,19 @@ import { Fragment } from "react";
 import { useDispatch } from "react-redux";
 import classes from "./Task.module.css";
 import { taskActions } from "../store";
+import { setStorage } from "../store/LocalStorage";
 
 const Task = (props) => {
   const dispatch = useDispatch();
 
   const deleteItemHandler = () => {
     dispatch(taskActions.removeItemFromList(props.id));
+    // setStorage();
   };
 
   const toggleCheckBoxHandler = () => {
     dispatch(taskActions.toggleCheckbox(props.id));
+    // setStorage();
   };
 
   let applyStyle = "";

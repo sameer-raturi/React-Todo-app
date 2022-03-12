@@ -4,6 +4,7 @@ import TaskList from "./TaskList";
 import classes from "./Todo.module.css";
 import { taskActions } from "../store";
 import { useDispatch, useSelector } from "react-redux";
+import { setStorage } from "../store/LocalStorage";
 
 let cnt = 0;
 const Todo = (props) => {
@@ -25,10 +26,10 @@ const Todo = (props) => {
       taskActions.addItemToList({
         id: cnt,
         message: message,
-        isChecked: false,
+        isChecked: false
       })
     );
-
+    // setStorage();
     taskInput.current.value = "";
   };
 
