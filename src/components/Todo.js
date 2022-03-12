@@ -3,15 +3,14 @@ import Card from "../UI/Card";
 import TaskList from "./TaskList";
 import classes from "./Todo.module.css";
 import { taskActions } from "../store";
-import { useDispatch, useSelector } from "react-redux";
-import { setStorage } from "../store/LocalStorage";
+import { useDispatch } from "react-redux";
 
 let cnt = 0;
 const Todo = (props) => {
   const taskInput = useRef();
 
   const dispatch = useDispatch();
-  const toShow = useSelector((state) => state.totalQuantity) > 0;
+  const toShow = props.totalQuantity > 0;
   const formSubmitHandler = (event) => {
     event.preventDefault();
 

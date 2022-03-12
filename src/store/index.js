@@ -4,7 +4,7 @@ const tasksSlice = createSlice({
   name: "storage",
   initialState: {
     items: [],
-    totalQuantity: 0,
+    totalQuantity: 0
   },
   reducers: {
     addItemToList(state, action) {
@@ -21,11 +21,14 @@ const tasksSlice = createSlice({
       );
       existingItem.isChecked = !existingItem.isChecked;
     },
-  },
+    replaceTodo(state, action) {
+      state = action.payload;
+    }
+  }
 });
 
 const store = configureStore({
-  reducer: tasksSlice.reducer,
+  reducer: tasksSlice.reducer
 });
 
 export const taskActions = tasksSlice.actions;
