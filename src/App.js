@@ -4,21 +4,26 @@ import "./App.css";
 import Todo from "./components/Todo";
 import { getStorage, setStorage } from "./store/LocalStorage";
 
+let isInitialized = false;
 function App() {
-  const dataList = useSelector((state) => state.items);
-  const totalQuantity = useSelector((state) => state.totalQuantity);
-
   const dispatch = useDispatch();
-
-  let todo = { items: dataList, totalQuantity: totalQuantity };
-
-  useEffect(() => {
-    dispatch(setStorage(todo));
-  }, [dispatch, todo]);
 
   useEffect(() => {
     dispatch(getStorage());
   }, [dispatch]);
+
+  const dataList = useSelector((state) => state.items);
+  const totalQuantity = useSelector((state) => state.totalQuantity);
+
+  useEffect(() => {
+    let todo = { items: dataList, totalQuantity: totalQuantity };
+
+    if (isInitialized === false) {
+      isInitialized = true;
+      return;
+    }
+    dispatch(setStorage(todo));
+  }, [dispatch, dataList, totalQuantity]);
 
   return (
     <div>

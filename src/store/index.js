@@ -10,6 +10,7 @@ const tasksSlice = createSlice({
     addItemToList(state, action) {
       state.items.push(action.payload);
       state.totalQuantity++;
+      console.log(state);
     },
     removeItemFromList(state, action) {
       state.items = state.items.filter((item) => item.id !== action.payload);
@@ -22,7 +23,9 @@ const tasksSlice = createSlice({
       existingItem.isChecked = !existingItem.isChecked;
     },
     replaceTodo(state, action) {
-      state = action.payload;
+      console.log(action.payload);
+      state = { ...action.payload };
+      console.log(state.items);
     }
   }
 });

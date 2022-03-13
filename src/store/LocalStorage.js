@@ -2,13 +2,12 @@ import { taskActions } from "./index";
 
 export const setStorage = (todo) => {
   return () => {
-    if (!localStorage.getItem("items")) {
-      localStorage.removeItem("items");
-      localStorage.removeItem("totalQuantity");
-    }
+    localStorage.clear();
 
-    localStorage.setItem("items", todo.items);
-    localStorage.setItem("totalQuantity", todo.totalQuantity);
+    localStorage.setItem("items", JSON.stringify(todo.items));
+    localStorage.setItem("totalQuantity", JSON.stringify(todo.totalQuantity));
+    console.log("setting storage");
+    console.log(localStorage.getItem("items"));
   };
 };
 
@@ -18,11 +17,18 @@ export const getStorage = () => {
       items: [],
       totalQuantity: 0
     };
-    if (localStorage.getItem("items")) {
-      localStore.items = localStorage.getItem("items");
-      localStore.totalQuantity = localStorage.getItem("totalQuantity");
+    if (localStorage.getItem("items") === null) {
+      return;
     }
 
+    // let items=localStorage.getItem("items")
+    localStore.items = localStorage.getItem("items");
+    localStore.totalQuantity = localStorage.getItem("totalQuantity");
+
+    if (localStore.items.length === 0) return;
+
+    console.log(localStore.items);
     dispatch(taskActions.replaceTodo(localStore));
+    console.log("replacing cart data");
   };
 };
