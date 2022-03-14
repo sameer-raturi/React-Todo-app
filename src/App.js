@@ -10,11 +10,25 @@ function App() {
 
   useEffect(() => {
     dispatch(getStorage());
-  }, [dispatch]);
+    // console.log(dispatch);
+  }, []);
 
-  const dataList = useSelector((state) => state.items);
-  const totalQuantity = useSelector((state) => state.totalQuantity);
+  // const temp1 = localStorage.getItem("items");
+  // const temp2 = localStorage.getItem("totalQuantity");
 
+  const dataList = useSelector((state) => {
+    // console.log(state);
+    return state.tasks.items;
+  });
+
+  const totalQuantity = useSelector((state) => state.tasks.totalQuantity);
+
+  console.log(`totalQuantity = ${totalQuantity}`);
+  // console.log(`dataList = ${dataList} `);
+
+  // setTimeout(() => {
+  //   console.log(`dataList = ${temp} `);
+  // }, 5000);
   useEffect(() => {
     let todo = { items: dataList, totalQuantity: totalQuantity };
 

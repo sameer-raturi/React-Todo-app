@@ -10,7 +10,7 @@ const tasksSlice = createSlice({
     addItemToList(state, action) {
       state.items.push(action.payload);
       state.totalQuantity++;
-      console.log(state);
+      // console.log(state.items);
     },
     removeItemFromList(state, action) {
       state.items = state.items.filter((item) => item.id !== action.payload);
@@ -21,17 +21,25 @@ const tasksSlice = createSlice({
         (item) => item.id === action.payload
       );
       existingItem.isChecked = !existingItem.isChecked;
+      // console.log(state.items);
     },
     replaceTodo(state, action) {
-      console.log(action.payload);
+      // console.log(action.payload);
+      // console.log(typeof action.payload.items);
       state = { ...action.payload };
-      console.log(state.items);
+      // console.log(state);
+
+      // console.log({ ...action.payload });
+      // state.items = [...action.payload.items] || [];
+      // state.items = action.payload.totalQuantity || 0;
+
+      // console.log(state);
     }
   }
 });
 
 const store = configureStore({
-  reducer: tasksSlice.reducer
+  reducer: { tasks: tasksSlice.reducer }
 });
 
 export const taskActions = tasksSlice.actions;

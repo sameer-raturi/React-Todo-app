@@ -3,32 +3,32 @@ import { taskActions } from "./index";
 export const setStorage = (todo) => {
   return () => {
     localStorage.clear();
+    const localStore = {
+      items: todo.items,
+      totalQuantity: todo.totalQuantity
+    };
 
-    localStorage.setItem("items", JSON.stringify(todo.items));
-    localStorage.setItem("totalQuantity", JSON.stringify(todo.totalQuantity));
-    console.log("setting storage");
-    console.log(localStorage.getItem("items"));
+    localStorage.setItem("data", JSON.stringify(localStore));
+    // localStorage.setItem("totalQuantity", JSON.stringify(todo.totalQuantity));
+    // console.log("setting storage");
+    // console.log(localStorage.getItem("items"));
   };
 };
 
 export const getStorage = () => {
-  return async (dispatch) => {
-    const localStore = {
-      items: [],
-      totalQuantity: 0
-    };
-    if (localStorage.getItem("items") === null) {
+  return (dispatch) => {
+    if (!localStorage.getItem("data")) {
+      console.log("no item found");
       return;
     }
 
     // let items=localStorage.getItem("items")
-    localStore.items = localStorage.getItem("items");
-    localStore.totalQuantity = localStorage.getItem("totalQuantity");
+    const localStore = JSON.parse(localStorage.getItem("data"));
+    // localStore.totalQuantity = localStorage.getItem("totalQuantity");
 
-    if (localStore.items.length === 0) return;
-
-    console.log(localStore.items);
+    // console.log(localStore);
+    // console.log(localStore.items);
     dispatch(taskActions.replaceTodo(localStore));
-    console.log("replacing cart data");
+    // console.log("replacing cart data");
   };
 };
