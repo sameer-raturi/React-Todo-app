@@ -8,7 +8,8 @@ const tasksSlice = createSlice({
   },
   reducers: {
     addItemToList(state, action) {
-      state.items.push(action.payload);
+      // state.items.push(action.payload);
+      state.items = [action.payload, ...state.items];
       state.totalQuantity++;
       // console.log(state.items);
     },
@@ -26,7 +27,7 @@ const tasksSlice = createSlice({
     replaceTodo(state, action) {
       // console.log(action.payload);
       // console.log(typeof action.payload.items);
-      // state = {...action.payload} ;
+      // state = { ...action.payload };
       // console.log(state);
       // state = { state...action.payload };
 
