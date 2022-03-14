@@ -26,9 +26,12 @@ const tasksSlice = createSlice({
     replaceTodo(state, action) {
       // console.log(action.payload);
       // console.log(typeof action.payload.items);
-      state = { ...action.payload };
+      // state = {...action.payload} ;
       // console.log(state);
+      // state = { state...action.payload };
 
+      state.items = action.payload.items;
+      state.totalQuantity = action.payload.totalQuantity;
       // console.log({ ...action.payload });
       // state.items = [...action.payload.items] || [];
       // state.items = action.payload.totalQuantity || 0;

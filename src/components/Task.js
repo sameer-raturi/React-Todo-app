@@ -24,7 +24,11 @@ const Task = (props) => {
   return (
     <Fragment>
       <div className={classes.task}>
-        <input type="checkbox" onClick={toggleCheckBoxHandler} />
+        <input
+          type="checkbox"
+          onClick={toggleCheckBoxHandler}
+          checked={props.isChecked}
+        />
         <div className={applyStyle}>{props.message}</div>
         <button onClick={deleteItemHandler}>Delete</button>
       </div>

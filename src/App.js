@@ -8,27 +8,28 @@ let isInitialized = false;
 function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getStorage());
-    // console.log(dispatch);
-  }, []);
-
   // const temp1 = localStorage.getItem("items");
   // const temp2 = localStorage.getItem("totalQuantity");
 
+  useEffect(() => {
+    dispatch(getStorage());
+    // console.log(dispatch);
+  }, [dispatch]);
+
   const dataList = useSelector((state) => {
-    // console.log(state);
+    // console.log(state, "selector");
     return state.tasks.items;
   });
 
   const totalQuantity = useSelector((state) => state.tasks.totalQuantity);
 
-  console.log(`totalQuantity = ${totalQuantity}`);
+  // console.log(`totalQuantity = ${totalQuantity}`);
   // console.log(`dataList = ${dataList} `);
 
   // setTimeout(() => {
-  //   console.log(`dataList = ${temp} `);
+  //   console.log(`dataList = ${dataList} `);
   // }, 5000);
+
   useEffect(() => {
     let todo = { items: dataList, totalQuantity: totalQuantity };
 

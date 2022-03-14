@@ -5,7 +5,6 @@ import classes from "./Todo.module.css";
 import { taskActions } from "../store";
 import { useDispatch } from "react-redux";
 
-let cnt = 0;
 const Todo = (props) => {
   const taskInput = useRef();
 
@@ -19,11 +18,10 @@ const Todo = (props) => {
     if (message.trim().length <= 0) {
       return;
     }
-    cnt++;
 
     dispatch(
       taskActions.addItemToList({
-        id: cnt,
+        id: props.totalQuantity + 1,
         message: message,
         isChecked: false
       })
