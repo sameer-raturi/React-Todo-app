@@ -4,6 +4,7 @@ import TaskList from "./TaskList";
 import classes from "./Todo.module.css";
 import { taskActions } from "../store";
 import { useDispatch } from "react-redux";
+import { v4 } from "uuid";
 
 const Todo = (props) => {
   const taskInput = useRef();
@@ -21,7 +22,7 @@ const Todo = (props) => {
 
     dispatch(
       taskActions.addItemToList({
-        id: props.totalQuantity + 1,
+        id: v4(),
         message: message,
         isChecked: false
       })
