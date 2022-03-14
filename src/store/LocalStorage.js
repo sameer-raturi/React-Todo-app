@@ -17,10 +17,10 @@ export const setStorage = (todo) => {
 
 export const getStorage = () => {
   return async (dispatch) => {
-    // if (!localStorage.getItem("data")) {
-    //   console.log("no item found");
-    //   return;
-    // }
+    if (!localStorage.getItem("data")) {
+      console.log("no item found");
+      return;
+    }
 
     // let items=localStorage.getItem("items")
     const localStore = JSON.parse(localStorage.getItem("data"));
